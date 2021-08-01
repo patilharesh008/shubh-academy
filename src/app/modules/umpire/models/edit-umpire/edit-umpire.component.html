@@ -1,0 +1,87 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"><b>Edit Umpire</b></h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <form [formGroup]="form" role="form">
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <label>Name <span style="color:#dc3545">*</span></label>
+                <div class="form-group has-feedback" [ngClass]="displayFieldCss('umpire_name')">
+                    <input type="text" class="form-control" autocomplete="umpire_name" formControlName="umpire_name"
+                        maxlength="50" placeholder="Enter umpire name">
+                    <app-field-error-display [displayError]="isFieldValid('umpire_name')"
+                        errorMsg="umpire name is required">
+                    </app-field-error-display>
+                </div>
+            </div>
+            <div class="col-lg-6 col-12">
+                <label>Email <span style="color:#dc3545">*</span></label>
+                <div class="form-group has-feedback" [ngClass]="displayFieldCss('umpire_email')">
+                    <input type="text" class="form-control" placeholder="Enter umpire email" formControlName="umpire_email"
+                        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                    <app-field-error-display [displayError]="isFieldValid('umpire_email')"
+                        errorMsg="umpire email is required">
+                    </app-field-error-display>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <label>Mobile Number <span style="color:#dc3545">*</span></label>
+                <div class="form-group has-feedback" [ngClass]="displayFieldCss('umpire_mobile')">
+                    <input type="text" class="form-control" autocomplete="umpire_mobile" formControlName="umpire_mobile"
+                        placeholder="Enter mobile number" (keypress)="keyPress($event)" minlength="10" maxlength="10">
+                        <span class="help-block" style="color:#dc3545; font-size: 87%;"
+                        *ngIf="f.umpire_mobile.invalid && f.umpire_mobile.errors.pattern">
+                        It is not a valid mobile number.</span>
+                        <span class="help-block" style="color:#dc3545; font-size: 87%"
+                            *ngIf="f.umpire_mobile.invalid && f.umpire_mobile.errors.required && formSubmitAttempt">
+                            10 Digit mobile Number is required</span>
+                </div>
+            </div>
+            <div class="col-lg-6 col-12">
+                <label>Status <span style="color:#dc3545">*</span></label>
+                <div class="form-group has-feedback" [ngClass]="displayFieldCss('is_active')">
+                    <ng-multiselect-dropdown placeholder="Select status" formControlName="is_active"
+                        [settings]="dropdownSettings" [data]="dropdownList" (onSelect)="onItemSelect($event)"
+                        (onDeSelect)="onItemDeSelect($event)">
+                    </ng-multiselect-dropdown>
+                    <app-field-error-display [displayError]="isFieldValid('is_active')"
+                        errorMsg="Status is required">
+                    </app-field-error-display>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <label>Date of Birth <span style="color:#dc3545">*</span></label>
+                <div class="form-group has-feedback" [ngClass]="displayFieldCss('birth_date')">
+                    <input type="date" class="form-control" (change)="ageCalculator($event)" autocomplete="birth_date"
+                        formControlName="birth_date">
+                    <app-field-error-display [displayError]="isFieldValid('birth_date')"
+                        errorMsg="Date of birth is required">
+                    </app-field-error-display>
+                </div>
+            </div>
+            <div class="col-lg-6 col-12" *ngIf="showAge!==null">
+
+                <label>Age </label>
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" [(ngModel)]="showAge" autocomplete="umpire_age"
+                        formControlName="umpire_age" placeholder="Enter your age" maxlength="150" disabled>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="updateUmpire()" [disabled]="isWebRequest">Update
+        <i class="fa fa-spinner fa-spin" style="font-size:20px" *ngIf="loading"></i>
+    </button>&nbsp;
+    <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+</div>

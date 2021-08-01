@@ -1,0 +1,127 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"><b>Add Student</b></h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="form" role="form">
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <label>Name <span style="color:#dc3545">*</span></label>
+                <div class="form-group has-feedback" [ngClass]="displayFieldCss('student_name')">
+                    <input type="text" class="form-control" autocomplete="student_name" formControlName="student_name"
+                        maxlength="50" placeholder="Enter name">
+                    <app-field-error-display [displayError]="isFieldValid('student_name')"
+                        errorMsg="Student name is required">
+                    </app-field-error-display>
+                </div>
+            </div>
+            <div class="col-lg-6 col-12">
+                <label>Email <span style="color:#dc3545">*</span></label>
+                <div class="form-group has-feedback" [ngClass]="displayFieldCss('student_email')">
+                    <input type="text" class="form-control" placeholder="Enter student email" formControlName="student_email"
+                        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                    <app-field-error-display [displayError]="isFieldValid('student_email')"
+                        errorMsg="Student email is required">
+                    </app-field-error-display>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <label>Mobile Number <span style="color:#dc3545">*</span></label>
+                <div class="form-group has-feedback" [ngClass]="displayFieldCss('student_mobile')">
+                    <input type="text" class="form-control" autocomplete="student_mobile" formControlName="student_mobile"
+                        placeholder="Enter mobile number" (keypress)="keyPress($event)" minlength="10" maxlength="10">
+                    <span class="help-block" style="color:#dc3545; font-size: 87%;"
+                    *ngIf="f.student_mobile.invalid && f.student_mobile.errors.pattern">
+                    It is not a valid mobile number.</span>
+                    <span class="help-block" style="color:#dc3545; font-size: 87%"
+                        *ngIf="f.student_mobile.invalid && f.student_mobile.errors.required && formSubmitAttempt">
+                        10 Digit mobile Number is required</span>
+                </div>
+            </div>
+            <div class="col-lg-6 col-12">
+                <label>City <span style="color:#dc3545">*</span></label>
+                <div class="form-group has-feedback" [ngClass]="displayFieldCss('city')">
+                    <input type="text" class="form-control" autocomplete="city" formControlName="city"
+                        placeholder="Enter mobile number">
+                    <app-field-error-display [displayError]="isFieldValid('city')" errorMsg="City is required">
+                    </app-field-error-display>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <label>Contact Person Name <span style="color:#dc3545">*</span></label>
+                <div class="form-group has-feedback" [ngClass]="displayFieldCss('contact_person')">
+                    <input type="text" class="form-control" autocomplete="email" formControlName="contact_person"
+                        placeholder="Enter contact person name">
+                    <app-field-error-display [displayError]="isFieldValid('contact_person')"
+                        errorMsg="Contact person is required">
+                    </app-field-error-display>
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-12">
+                <label>Student Password <span style="color:#dc3545">*</span></label>
+                <div class="form-group has-feedback" [ngClass]="displayFieldCss('student_password')">
+                    <input [type]="showPasswordFlag ? 'text' : 'password'" class="form-control"
+                        autocomplete="new-password" formControlName="student_password" placeholder="Enter password">
+                    <i class="position-absolute cursor-pointer fa text-color" [ngClass]="{
+                            'fa-eye': !showPasswordFlag,
+                            'fa-eye-slash': showPasswordFlag
+                          }"
+                        style="position: relative; float: right; margin-right: 6px; margin-top: -25px; z-index: 2;"
+                        (click)="showPasswordFlag = !showPasswordFlag"></i>
+                    <span class="help-block" style="color:#dc3545; font-size: 87%;"
+                        *ngIf="f.student_password.invalid && f.student_password.errors.pattern">
+                        Minimum 8 characters is required Lowercase, <br> Uppercase,Numbers and Special
+                        characters.</span>
+                    <span class="help-block" style="color:#dc3545; font-size: 87%"
+                        *ngIf="f.student_password.invalid && f.student_password.errors.required && formSubmitAttempt">
+                         Password is required</span>
+                </div>
+            </div>
+        </div>
+ <div class="row">
+    <div class="col-lg-12 col-12">
+        <label>Address <span style="color:#dc3545">*</span></label>
+        <div class="form-group has-feedback" [ngClass]="displayFieldCss('student_address')">
+            <textarea type="text" class="form-control" rows="2" formControlName="student_address"
+                placeholder="Enter student_address" maxlength="100"></textarea>
+            <app-field-error-display [displayError]="isFieldValid('student_address')" errorMsg="Student address is required">
+            </app-field-error-display>
+        </div>
+    </div>
+ </div>
+        <!-- <div class="row">
+            <div class="col-lg-6 col-12">
+                <label>Sports <span style="color:#dc3545">*</span></label>
+                <div class="form-group has-feedback" [ngClass]="displayFieldCss('sport_id')">
+                    <ng-multiselect-dropdown placeholder="Select Sports" formControlName="sport_id"
+                        [settings]="SportsListDropdownSettings" [data]="drodownDatalist"
+                        (onSelect)="onItemSelect($event,'sport_id')" (onDeSelect)="onItemDeSelect($event,'sport_id')"
+                        (onSelectAll)="selectAllCategories($event)" (onDeSelectAll)="selectAllCategories($event)">
+                    </ng-multiselect-dropdown>
+                    <app-field-error-display [displayError]="isFieldValid('sport_id')" errorMsg="Sports is required">
+                    </app-field-error-display>
+                </div>
+            </div>
+            <div class="col-lg-6 col-12">
+                <label>Club Logo</label>
+                <div class="form-group has-feedback">
+                    <input type="file" class="form-control" formControlName="images" accept="*" multiple="multiple"
+                        (change)="onFileChange($event)">
+                </div>
+            </div>
+        </div> -->
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="addClub()" [disabled]="isWebRequest">Submit
+        <i class="fa fa-spinner fa-spin" style="font-size:20px" *ngIf="loading"></i>
+    </button>&nbsp;
+    <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+</div>

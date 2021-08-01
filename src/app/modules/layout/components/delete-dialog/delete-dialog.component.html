@@ -1,0 +1,24 @@
+<div class="modal-header">
+	<h4 class="modal-title"><b>Confirm</b></h4>
+	<button type="button" class="close" aria-label="Close" (click)="close()">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body" style="max-width: max-content;">
+	<div class="row">
+		<div class="col-lg-2">
+
+			<h5><i class="fa fa-exclamation-triangle text-primary" aria-hidden="true"
+					style="font-size: x-large;"></i></h5>
+		</div>
+		<div class="col-lg-10">
+			<h5>Are you sure, You want to delete ?</h5>
+		</div>
+
+	</div>
+</div>
+<div class="modal-footer">
+	<button type="btn btn-primary" class="btn btn-primary pull-left" (click)="delete()"
+		style=" background-color: #3c8dbc;">Delete</button>
+	<button type="button" class="btn btn-outline-default pull-right" (click)="close()">Cancel</button>
+</div>

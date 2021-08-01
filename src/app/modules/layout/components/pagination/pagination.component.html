@@ -1,0 +1,24 @@
+<div class="pull-left" style="padding: 10px 0;">
+  <span>
+show
+<select [ngModel]="perPage" (change)="changePerPageSelection($event.target.value)">
+<!-- <option>1</option> -->
+<option>10</option>
+<option>25</option>
+<option>50</option>
+<option>100</option>
+<option>1000</option>
+</select>
+entries
+</span>
+  <span> <i class="fa fa-angle-double-right"></i>
+    showing {{(currentPage - 1) * perPage + 1}} to {{(currentPage - 1) * perPage + perPage > total ? total : (currentPage
+- 1) * perPage + perPage}} of {{total}} entries
+</span>
+</div>
+<div class="pagination btn-group pull-right">
+  <button class="btn btn-primary btn-sm" [disabled]="currentPage == 1" (click)="pager(1)">First</button>
+  <button class="btn btn-primary btn-sm" [disabled]="currentPage == 1" (click)="pager(+currentPage - 1)">Previous</button>
+  <button class="btn btn-primary btn-sm" [disabled]="currentPage == lastPage" (click)="pager(+currentPage + 1)">Next</button>
+  <button class="btn btn-primary btn-sm" [disabled]="currentPage == lastPage" (click)="pager(+lastPage)">Last</button>
+</div>

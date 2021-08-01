@@ -1,0 +1,52 @@
+<div class="login-box">
+  <div class="login-logo">
+    <a><b>EDU-SYSTEM</b></a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Sign In </p>
+
+    <form [formGroup]="form" role="form">
+      <label>Email <span style="color:#dc3545">*</span></label>
+      <div class="form-group has-feedback" [ngClass]="displayFieldCss('email')">
+        <input type="text" class="form-control" placeholder="Enter email" formControlName="email"
+          pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" autocomplete="email">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <app-field-error-display [displayError]="isFieldValid('email')" errorMsg="Email is required">
+        </app-field-error-display>
+      </div>
+      <label>Password <span style="color:#dc3545">*</span></label>
+      <div class="form-group has-feedback" [ngClass]="displayFieldCss('password')">
+        <input [type]="showPasswordFlag ? 'text' : 'password'" class="form-control" autocomplete="new-password"
+          formControlName="password" placeholder="Enter password">
+        <i class="position-absolute cursor-pointer fa text-color" [ngClass]="{
+                  'fa-eye': !showPasswordFlag,
+                  'fa-eye-slash': showPasswordFlag
+                }" style="position: relative; float: right; margin-right: 6px; margin-top: -25px; z-index: 2;"
+          (click)="showPasswordFlag = !showPasswordFlag"></i>
+        <app-field-error-display [displayError]="isFieldValid('password')" errorMsg="Password is required">
+        </app-field-error-display>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <a [routerLink]="['/forget-password']">Forgot Password</a><br>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="button" class="btn btn-primary btn-block btn-flat" (click)="add()" [disabled]="isWebRequest">
+            Sign In
+            <i class="fa fa-spinner fa-spin" style="font-size:20px" *ngIf="loading"></i>
+            <span *ngIf="redirecting">SUCCESSFUL </span>
+          </button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+
+
+    <!-- /.social-auth-links -->
+
+
+  </div>
+  <!-- /.login-box-body -->
+</div>

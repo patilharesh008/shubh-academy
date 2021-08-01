@@ -1,0 +1,176 @@
+/* @import "~ng-pick-datetime/assets/style/picker.min.css"; */
+
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-lists/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-calendars/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-angular-calendars/styles/material.css';
+/* @import url("https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css"); */
+
+.my-class {
+    padding-top: 150px;
+}
+
+.fade {
+    opacity: 1;
+    -webkit-transition: opacity 0.15s linear;
+    -o-transition: opacity 0.15s linear;
+    transition: opacity 0.15s linear;
+}
+
+.modal-header {
+    border-bottom-color: #ddd;
+}
+
+.modal-footer {
+    border-top-color: #ddd;
+}
+
+/* modal animation */
+
+.modal-content {
+    animation-name: modal-anim;
+    animation-duration: 0.3s;
+}
+
+@keyframes modal-anim {
+    0% {
+        transform: scale(0.7);
+    }
+    75% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.hide-otp-timer {
+    display: none;
+}
+
+.text-class {
+    height: 32px;
+    width: 200px
+}
+
+.ml-3 {
+    margin-left: 3px;
+}
+
+.mb-3 {
+    margin-bottom: 3px;
+}
+
+.modal-title {
+    display: inline;
+}
+
+.multiselect-dropdown .dropdown-btn {
+    border: 1px solid #d2d6de;
+    border-radius: 0px;
+}
+
+.ck-editor__editable_inline {
+    min-height: 150px !important;
+}
+
+/* .card {
+    border: 2px solid #eee;
+} */
+.img-responsive{
+    border-radius: 50%!important;
+}
+/* .rounded-circle{
+    border-radius: 50%!important;
+} */
+@media (min-width: 320px) and (max-width: 480px) {
+  
+    .textarea-form{
+        width: 100%;
+    }
+    
+label {
+    display: inline-flex;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+    
+  }
+  
+  /* remove spinner for input number */
+  input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+/* Validation error msg css */
+.error-msg{
+        /* color: red; */
+        width: 100%!important;
+        margin-top: .25rem!important;
+        font-size: 88%;
+        color: #dc3545!important;
+}
+
+::placeholder{
+    font-size: 87%!important;
+}
+
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+.table td {
+    padding: 5px;
+    font-size: 1rem!important;
+}
+
+/* badge css */
+.badge-danger {
+    color: #fff;
+    background-color: #dc3545;
+    font-size: 10px;
+}
+.badge-success {
+    color: #fff;
+    background-color: #28a745;
+    font-size: 10px;
+}
+/* pagination  */
+.pagination {
+    margin: 0px 0;
+}
+
+.form-group.has-feedback.has-error>ng-multiselect-dropdown>div>div>.dropdown-btn {
+    border-color: #dd4b39!important;
+    
+}
+.bs-popover-bottom.popover-content.popover.sm.in{
+    max-width: 394px!important;
+}
+.col-padding{
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+/* Accordian css */
+.panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e114";
+    font-size: small!important;    /* adjust as needed, taken from bootstrap.css */
+    float: right;      /* adjust as needed */
+    color: grey;         /* adjust as needed */
+}
+.panel-heading .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+}
+

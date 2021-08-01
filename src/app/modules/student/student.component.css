@@ -1,0 +1,25 @@
+.float-right {
+               float: right;
+               text-align: right;
+}
+
+.star-rating {
+               color: #f88f01;
+               font-size: 10px;
+}
+
+.rating-ui {
+               background-color: black!important;
+}
+
+.count-rate {
+               color: white;
+               font-size: 10px;
+}
+.table td{
+    padding: 5px;
+    font-size: 12px;
+}
+.rounded-circle{
+    border-radius: 50%!important;
+}

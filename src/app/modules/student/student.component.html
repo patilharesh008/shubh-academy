@@ -1,0 +1,94 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <!-- <h4>
+      <b style="font-weight: 600;">Clubs  </b> 
+       </h4>
+    <ol class="breadcrumb">
+      <li>
+        <a [routerLink]="['/home/dashboard']" routerLinkActive="active"><i class="fa fa-dashboard"></i> Home</a>
+      </li>
+      <li class="active">Clubs</li>
+    </ol> -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">Student Details</h3>
+        <label class="pull-right" style="display: inline-flex;">
+          <input type="search" class="form-control input-sm" [(ngModel)]="search"
+            (keyup)="searchTasks($event.target.value)" placeholder="Search..." aria-controls="example1">&nbsp;<button
+            class="btn btn-default btn-sm" type="button" (click)="addStudentData()">
+            + <span>Add New</span>
+          </button>&nbsp;
+        </label>
+      </div>
+      <div class="box-body">
+        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="box-body no-padding">
+                <div class="table-responsive">
+                  <table class="table table-bordered ">
+                    <thead>
+                      <tr>
+                        <th style="width: 10px;">Sr.No.</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Contact Person</th>
+                        <th>City</th>
+                        <th>Address</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- <tr *ngIf="studentsDataList?.length === 0">
+                        <td colspan="9" class="text-center"><b style="font-size: large;" class="text-muted">No records
+                            found</b></td>
+                      </tr> -->
+                      <tr *ngFor="let item of studentsDataList.data.rows;let i=index;">
+                        <td style="width: 10px">{{i+1}}</td>
+                        <td>{{item.student_name}}</td>
+                        <td>{{item.student_email}}</td>
+                        <td>{{item.student_mobile}}</td>
+                        <td>{{item.contact_person}}</td>
+                        <td>{{item.city}}</td>
+                        <td>{{item.student_address}}</td>
+                        <td *ngIf="item.is_active==0" class="status-active"><small
+                            class="badge badge-success"><small>Active</small></small></td>
+                        <td *ngIf="item.is_active==1" class="status-inactive"><small
+                            class="badge badge-danger"><small>Inactive</small></small></td>
+                        <!-- <td *ngIf="item.is_active=='' || item.is_active==null"></td> -->
+                        <td>
+                          <a class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top"
+                            title="Update club" (click)="editStudentData(item)">
+                            <i class="fa fa-pencil"></i>
+                          </a>&nbsp;
+                          <a class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top"
+                            title="Delete club" (click)="deleteStudents(item)">
+                            <i class="fa fa-trash"></i>
+                          </a>&nbsp;
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <app-pagination *ngIf="studentsDataList?.data" [currentPage]="currentPage" [perPage]="perPage"
+                  [total]="totalItems" [lastPage]="studentsDataList.totalPagess" (loadPage)="pager($event)"
+                  (changePerPage)="changePerPage($event)">
+                </app-pagination>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </section>
+</div>
+
+<div class="control-sidebar-bg"></div>

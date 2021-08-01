@@ -1,0 +1,56 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"><b>Delete Sport</b></h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <table class="table">
+
+        <tbody>
+          <!---->
+          <tr>
+            <td colspan="3" class="text-left p-2">
+              <div class="row">
+                <div class="col-lg-3 col-md-3 col-xs-4">
+                  <p>play cricket</p>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-8">
+                 
+                  <a data-toggle="tooltip" data-placement="top"
+                    title="Delete record" class="btn btn-danger btn-xs pull-right"><i class="fa fa-trash"></i></a>
+                </div>
+              </div>
+            </td>
+            
+          </tr>
+          <tr>
+            <td colspan="3" class="text-left p-2">
+              <div class="row">
+                <div class="col-lg-3 col-md-3 col-xs-4">
+                  <p>play football</p>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-8">
+                 
+                  <a data-toggle="tooltip" data-placement="top"
+                    title="Delete record" class="btn btn-danger btn-xs pull-right"><i class="fa fa-trash"></i></a>
+                </div>
+              </div>
+            </td>
+            
+          </tr>
+        </tbody>
+      </table>
+        <!-- <div class="form-group" [ngClass]="displayFieldCss('sport_name')">
+            <ng-multiselect-dropdown placeholder="Select sport name" formControlName="sport_name" [settings]="dropdownSettings"
+                [data]="dropdownList" (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)">
+            </ng-multiselect-dropdown>
+            <app-field-error-display [displayError]="isFieldValid('sport_name')" errorMsg="Sport name is required">
+            </app-field-error-display>
+        </div> -->
+  
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="editsports()" [disabled]="isWebRequest">Submit</button>&nbsp;
+    <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+</div>

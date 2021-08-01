@@ -1,0 +1,225 @@
+<!-- Content Wrapper. Contains page content for admin -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h4>
+      Dashboard
+    </h4>
+    <ol class="breadcrumb">
+      <li>
+        <a [routerLink]="['/home/dashboard']" routerLinkActive="active"><i class="fa fa-dashboard"></i> Home</a>
+      </li>
+      <li class="active">Dashboard</li>
+    </ol>
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+      <div class="col-lg-3 col-xs-6" *ngIf="role =='SuperAdmin'">
+        <!-- small box -->
+        <div class="small-box bg-aqua">
+          <div class="inner">
+            <h3>{{this.clubsCount}}</h3>
+            <p><b>Clubs</b></p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-building" aria-hidden="true"></i>
+          </div>
+          <a class="small-box-footer" [routerLink]="['/home/club']"><b>More info </b> <i
+              class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-xs-6" *ngIf="role =='Admin'">
+        <!-- small box -->
+        <div class="small-box bg-yellow">
+          <div class="inner">
+            <h3>{{this.usersCount}}</h3>
+            <p><b>Students</b></p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-users"></i>
+          </div>
+          <a class="small-box-footer" [routerLink]="['/home/users']"><b>More info </b> <i
+              class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-xs-6" *ngIf="role =='Admin'">
+        <!-- small box -->
+        <div class="small-box bg-red">
+          <div class="inner">
+            <h3>{{this.coachesCount}}</h3>
+
+            <p><b>Coaches</b></p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-user-secret" aria-hidden="true"></i>
+          </div>
+          <a class="small-box-footer" [routerLink]="['/home/coche']"><b>More info </b> <i
+              class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <!-- ./col -->
+      <div class="col-lg-3 col-xs-6" *ngIf="role =='SuperAdmin'">
+        <!-- small box -->
+        <div class="small-box bg-green">
+          <div class="inner">
+            <h3>{{this.sportsCount}}</h3>
+
+            <p><b>Sports</b></p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-futbol-o" aria-hidden="true"></i>
+          </div>
+          <a class="small-box-footer" [routerLink]="['/home/sports']"><b>More info </b> <i
+              class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-xs-6" *ngIf="role =='Admin'">
+        <!-- small box -->
+        <div class="small-box bg-aqua">
+          <div class="inner">
+            <h3>{{this.umpireCount}}</h3>
+            <p><b>Umpires</b></p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-user-circle" aria-hidden="true"></i>
+          </div>
+          <a class="small-box-footer" [routerLink]="['/home/umpire']"><b>More info </b> <i
+              class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
+      <div class="col-lg-3 col-xs-6" *ngIf="role =='Admin'">
+        <!-- small box -->
+        <div class="small-box bg-green">
+          <div class="inner">
+            <h3>{{this.batchesCount}}</h3>
+            <p><b>Batches</b></p>
+          </div>
+          <div class="icon">
+            <i class="fa fa fa-table"></i>
+          </div>
+          <a class="small-box-footer" [routerLink]="['/home/batches']"><b>More info </b> <i
+              class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
+    </div>
+    <div class="box box-primary" *ngIf="role =='Admin'">
+      <div class="box-header with-border">
+        <h3 class="box-title">Todays Updated Records</h3>
+      </div>
+      <div class="box-body">
+        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+          <div class="row">
+            <div class="col-lg-4 col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Students</h4>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th style="width: 10px">Sr.No</th>
+                        <th>Student Name</th>
+                        <th>Email</th>
+                        <!-- <th>Mobile</th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngIf="allUsersDetails?.length === 0">
+                        <td colspan="3" class="text-center">No records inserted today.</td>
+                      </tr>
+                      <tr *ngFor="let item of allUsersDetails;let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{item.user_name}}</td>
+                        <td>{{item.email}}</td>
+                        <!-- <td>{{item.mobile}}</td> -->
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+            <div class="col-lg-4 col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Umpires</h4>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table class="table table-bordered">
+                    <thead>
+
+                      <tr>
+                        <th style="width: 10px">Sr.No</th>
+                        <th>Umpire Name</th>
+                        <th>Email</th>
+                        <!-- <th>Mobile</th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngIf="allUmpireDetails?.length === 0">
+                        <td colspan="3" class="text-center">No records inserted today.</td>
+                      </tr>
+                      <tr *ngFor="let item of allUmpireDetails;let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{item.umpire_name}}</td>
+                        <td>{{item.umpire_email}}</td>
+                        <!-- <td>{{item.umpire_mobile}}</td> -->
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+            <div class="col-lg-4 col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Coaches</h4>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th style="width: 10px">Sr.No</th>
+                        <th>Coach Name</th>
+                        <th>Email</th>
+                        <!-- <th>Mobile</th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngIf="allCoachesDeatils?.length === 0">
+                        <td colspan="3" class="text-center">No records inserted today.</td>
+                      </tr>
+                      <tr *ngFor="let item of allCoachesDeatils;let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{item.coach_name}}</td>
+                        <td>{{item.coach_email}}</td>
+                        <!-- <td>{{item.coach_mobile}}</td> -->
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+        </div>
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </section>
+</div>
+
+<div class="control-sidebar-bg"></div>
